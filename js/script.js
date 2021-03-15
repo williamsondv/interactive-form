@@ -29,11 +29,13 @@ shirtDesigns.addEventListener("change", function(event){
     const options = colorSelect.children;
     colorSelect.disabled = false;
     if(shirtDesigns.value == 'js puns'){
+        colorSelect.selectedIndex = "1";
         for(let i = 1; i < 4; i++) {
             options[i].style.display = "inline";
             options[i + 3].style.display = "none"
         }
     } else if(shirtDesigns.value == 'heart js') {
+        colorSelect.selectedIndex = "4";
         for(let i = 1; i < 4; i++) {
             options[i + 3].style.display = "inline";
             options[i].style.display = "none"
@@ -162,9 +164,9 @@ function validateActivities() {
 
 //validate credit card input at 13-16 digits
 function validateCreditCard() {
-    let creditCard = document.getElementById('cc-num');
-    let regEx = /^[0-9]{13,16}$/;
-    if(document.getElementById('credit-card').style.display != 'none'){
+   if(document.getElementById("payment").options.selectedIndex == '1'){
+        let creditCard = document.getElementById('cc-num');
+        let regEx = /^[0-9]{13,16}$/;
     if(!regEx.test(creditCard.value)) {
         let errorMessage = document.createElement('DIV');
         if(!document.getElementById('credit-error')){
@@ -180,14 +182,14 @@ function validateCreditCard() {
         }
         return true;
         }
-    }
+    } return true;
 }
 
 //validate  CVV
 function validateCVV() {
-    let cvv = document.getElementById('cvv');
-    let regEx = /^[0-9]{3}$/;
-    if(document.getElementById('credit-card').style.display != 'none'){
+    if(document.getElementById("payment").options.selectedIndex == '1'){
+        let cvv = document.getElementById('cvv');
+        let regEx = /^[0-9]{3}$/;
     if(!regEx.test(cvv.value)) {
         let errorMessage = document.createElement('DIV');
         if(!document.getElementById('cvv-error')){
@@ -203,14 +205,14 @@ function validateCVV() {
         }
         return true;
         }
-    }
+    } return true;
 }
 
 //validate Zip Code
 function validateZipCode() {
-    let zip = document.getElementById('zip');
-    let regEx = /^[0-9]{5}$/;
-    if(document.getElementById('credit-card').style.display != 'none'){
+    if(document.getElementById("payment").options.selectedIndex == '1'){
+        let zip = document.getElementById('zip');
+        let regEx = /^[0-9]{5}$/;
     if(!regEx.test(zip.value)) {
         let errorMessage = document.createElement('DIV');
         if(!document.getElementById('zip-error')){
@@ -232,7 +234,7 @@ function validateZipCode() {
         }
         return true;
         }
-    }
+    } return true;
 }
 
 //add .focus class on focus event for checkboxes
